@@ -57,9 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(step);
   });
 
-  const since = new Date("2024-01-18");
-  const days = Math.floor((Date.now()-since.getTime())/86400000);
-  document.querySelectorAll("[data-ownership-day]").forEach(e=>e.textContent=days);
 
   const observer = new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
@@ -76,6 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   },{threshold:0.15});
 
+ // First calculate ownership days
+  const since = new Date("2024-01-18");
+  const days = Math.floor((Date.now()-since.getTime())/86400000);
+  document.querySelectorAll("[data-ownership-day]").forEach(e=>e.textContent=days);
+// Then animate all counters
   document.querySelectorAll(".card").forEach(card=>{
     card.style.opacity="0";
     observer.observe(card);
