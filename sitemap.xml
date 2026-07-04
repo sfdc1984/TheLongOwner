@@ -20,5 +20,25 @@
     <loc>/long-haul.html</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>/bonnet-flanks.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/auto-headlights.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/vehicle-ahead-has-moved.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/driver-fatigue.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/honda-connect-insights.html</loc>
+    <priority>0.6</priority>
+  </url>
 </urlset>
 </content>
