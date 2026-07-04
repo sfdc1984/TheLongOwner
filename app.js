@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyFilter();
   }
 
-  document.querySelectorAll('.value').forEach(el => {
+  document.querySelectorAll('.value:not([data-ownership-day])').forEach(el => {
     const target = parseInt(el.textContent.replace(/,/g,''),10);
     if (isNaN(target)) return;
 
@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const since = new Date("2024-01-18");
   const days = Math.floor((Date.now()-since.getTime())/86400000);
   document.querySelectorAll("[data-ownership-day]").forEach(e=>e.textContent=days);
+
 // Then animate all counters
   document.querySelectorAll(".card").forEach(card=>{
     card.style.opacity="0";
