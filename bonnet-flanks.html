@@ -14,6 +14,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<!-- Quick fallback mapping to ensure your structural layout tokens match your exact palette variables -->
+<style>
+    :root {
+        --surface: var(--panel);
+        --line: var(--border);
+    }
+</style>
 </head>
 <body class="ed-body">
 
@@ -86,17 +93,17 @@
 <div class="ed-eyebrow">Real-World Validation</div>
 <h2 class="ed-h2">Where it showed up, unprompted.</h2>
 <div class="ed-validation-grid">
-<div>
+<div class="card">
 <span class="ed-val-num">01</span>
 <h3>Parking</h3>
 <p>Reversing into tighter bays without the usual back-and-forth mirror checks.</p>
 </div>
-<div>
+<div class="card">
 <span class="ed-val-num">02</span>
 <h3>Passing Trucks</h3>
 <p>Judging clearance on narrow highways without easing off early out of caution.</p>
 </div>
-<div>
+<div class="card">
 <span class="ed-val-num">03</span>
 <h3>Hairpin Bends</h3>
 <p>Placing the car through a bend by feel, on ghat roads with no room for error.</p>
