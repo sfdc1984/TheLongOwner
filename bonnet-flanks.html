@@ -56,12 +56,6 @@
 </div>
 </header>
 
-<section class="ed-section ed-story">
-<p class="ed-drop">I first noticed this on a mountain road. Instead of constantly checking my mirrors, I found myself naturally reading the raised shoulder lines on the bonnet to understand exactly where the front corners of the car were.</p>
-<p>Later, I noticed the same behaviour in narrow city streets. Parking. Passing trucks. Hairpin bends. Eventually I realised these weren't just styling lines — they had become constant visual references, sitting quietly inside my peripheral vision the entire time.</p>
-<p>I never consciously learned this. My brain simply adapted, somewhere over thousands of kilometres, without asking permission.</p>
-</section>
-
 <section class="ed-section ed-explain">
 <div class="ed-explain-text">
 <div class="ed-eyebrow">Engineering Explained</div>
@@ -70,9 +64,34 @@
 <p>This doesn't replace mirrors. It complements them, filling the gap in the half-second before a mirror check would even begin.</p>
 </div>
 <div class="ed-diagram">
-<div class="ed-diagram-placeholder">
-<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="10" width="32" height="22" rx="3" stroke="#9fb0c3" stroke-width="1.3"/><circle cx="20" cy="21" r="4" stroke="#9fb0c3" stroke-width="1.3"/></svg>
-<span>Diagram — driver eye position, peripheral vision cone and bonnet edge lines</span>
+<div style="background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; min-height: 280px; box-sizing: border-box;">
+    <!-- Inline Technical SVG Diagram -->
+    <svg width="100%" height="180" viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 260px;">
+        <!-- Peripheral Vision Cone -->
+        <path d="M150 155 L40 20 L260 20 Z" fill="rgba(159, 176, 195, 0.05)" />
+        <path d="M150 155 L80 20 M150 155 L220 20" stroke="rgba(159, 176, 195, 0.15)" stroke-width="1" stroke-dasharray="3 3" />
+        
+        <!-- Car Bonnet Outline -->
+        <path d="M80 20 L220 20 L210 110 L90 110 Z" stroke="var(--line)" stroke-width="1.5" fill="none" opacity="0.6"/>
+        <!-- Windscreen -->
+        <path d="M75 110 L225 110 L240 145 L60 145 Z" stroke="var(--line)" stroke-width="1.2" fill="none" opacity="0.3"/>
+        
+        <!-- Raised Bonnet Flanks / Creases -->
+        <path d="M100 20 L108 110" stroke="#9fb0c3" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M200 20 L192 110" stroke="#9fb0c3" stroke-width="2.5" stroke-linecap="round" />
+        
+        <!-- Driver Position Anchor Point -->
+        <circle cx="150" cy="155" r="5" fill="#9fb0c3" />
+        <circle cx="150" cy="155" r="12" stroke="#9fb0c3" stroke-width="1" stroke-dasharray="2 2" opacity="0.5" />
+        
+        <!-- Diagram Labels -->
+        <text x="150" y="175" fill="var(--muted)" font-size="9" font-family="Inter, sans-serif" text-anchor="middle" letter-spacing="0.5">DRIVER EYE POINT</text>
+        <text x="52" y="65" fill="#9fb0c3" font-size="9" font-family="Inter, sans-serif" text-anchor="end">LEFT FLANK</text>
+        <text x="248" y="65" fill="#9fb0c3" font-size="9" font-family="Inter, sans-serif" text-anchor="start">RIGHT FLANK</text>
+    </svg>
+    <span style="font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 16px; font-family: Inter, sans-serif; display: block; max-width: 240px; line-height: 1.3;">
+        <strong>Visual Sightlines:</strong> How the structural creases track perfectly along the outer boundaries of the driver's core visual projection field.
+    </span>
 </div>
 </div>
 </section>
