@@ -361,3 +361,378 @@ footer a:hover{color:var(--text)}
         grid-template-columns:1fr;
     }
 }
+
+
+/* ===========================
+   Instagram-style Carousel
+   =========================== */
+
+.ig-carousel{
+    position:relative;
+    max-width:420px;
+    margin:0 auto;
+}
+
+.ig-track{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    border-radius:16px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+}
+.ig-track::-webkit-scrollbar{display:none;}
+
+.ig-slide{
+    flex:0 0 100%;
+    scroll-snap-align:center;
+    aspect-ratio:1/1;
+}
+.ig-slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.ig-dots{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:14px;
+}
+.ig-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--border);
+    cursor:pointer;
+    border:none;
+    padding:0;
+    transition:.2s;
+}
+.ig-dot.active{
+    background:var(--gold);
+    width:9px;
+    height:9px;
+}
+
+.ig-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(11,16,22,.55);
+    border:none;
+    color:#fff;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:1.1rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:.85;
+    transition:.2s;
+}
+.ig-arrow:hover{opacity:1;}
+.ig-prev{left:10px;}
+.ig-next{right:10px;}
+
+.ig-caption{
+    text-align:center;
+    color:var(--muted);
+    margin:14px auto 0;
+    font-size:.95rem;
+    max-width:420px;
+}
+
+@media(max-width:480px){
+    .ig-arrow{display:none;}
+}
+
+
+/* ===========================================
+   Editorial Article Template (bonnet-flanks.html)
+   Distinct from the card-based template used
+   elsewhere on the site — a flagship treatment.
+   =========================================== */
+
+.ed-body{ overflow-x:hidden; }
+
+.ed-progress{
+    position:fixed;
+    top:0; left:0;
+    height:3px;
+    width:0%;
+    background:var(--gold);
+    z-index:1200;
+    transition:width .1s linear;
+}
+
+.ed-main{ width:100%; }
+
+/* ---- Hero ---- */
+.ed-hero{
+    position:relative;
+    min-height:86vh;
+    display:flex;
+    align-items:flex-end;
+    padding:0 0 80px;
+}
+.ed-hero-media{
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    filter:brightness(.55);
+}
+.ed-hero-media-note{
+    position:absolute;
+    top:16px;
+    right:16px;
+    background:rgba(9,13,19,.75);
+    color:var(--muted);
+    font-size:.72rem;
+    padding:6px 12px;
+    border-radius:999px;
+    z-index:2;
+    letter-spacing:.02em;
+}
+.ed-hero-text{
+    position:relative;
+    z-index:2;
+    width:min(760px,88%);
+    margin:0 auto;
+    text-align:center;
+}
+.ed-eyebrow{
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    font-size:.78rem;
+    margin-bottom:18px;
+}
+.ed-title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3rem,7vw,5.2rem);
+    line-height:1.04;
+    margin-bottom:26px;
+}
+.ed-subtitle{
+    font-size:1.2rem;
+    color:#d7e0ea;
+    max-width:52ch;
+    margin:0 auto 30px;
+}
+.ed-meta{
+    font-size:.85rem;
+    color:var(--muted);
+    letter-spacing:.03em;
+}
+.ed-meta-dot{ margin:0 10px; }
+
+/* ---- Generic section rhythm ---- */
+.ed-section{
+    width:min(720px,88%);
+    margin:120px auto;
+}
+.ed-h2{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(1.8rem,3.4vw,2.6rem);
+    line-height:1.25;
+    margin-bottom:24px;
+}
+
+/* ---- Opening story / conclusion ---- */
+.ed-story p{
+    font-size:1.15rem;
+    color:#dbe3ec;
+    max-width:68ch;
+    margin-bottom:28px;
+}
+.ed-drop{
+    font-family:"Cormorant Garamond",serif;
+    font-size:1.6rem;
+    font-weight:500;
+    color:var(--text);
+    line-height:1.5;
+}
+
+/* ---- Engineering explanation + diagram ---- */
+.ed-explain{
+    width:min(1080px,92%);
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:60px;
+    align-items:start;
+}
+.ed-explain-text p{
+    font-size:1.08rem;
+    color:#dbe3ec;
+    margin-bottom:20px;
+}
+.ed-diagram-placeholder{
+    border:1px dashed var(--line);
+    border-radius:18px;
+    padding:40px 24px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.85rem;
+}
+
+/* ---- Full-bleed photograph ---- */
+.ed-photo-full{
+    width:100%;
+    margin:0 0 120px;
+}
+.ed-photo-placeholder{
+    width:100%;
+    height:min(70vh,640px);
+    background-size:cover;
+    background-position:center;
+    background-color:var(--surface);
+}
+.ed-photo-full figcaption{
+    text-align:center;
+    color:var(--muted);
+    font-size:.85rem;
+    margin-top:14px;
+}
+
+/* ---- Real-world validation grid ---- */
+.ed-validation{ width:min(1080px,92%); }
+.ed-validation-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+    margin-top:36px;
+}
+.ed-val-num{
+    display:block;
+    font-family:"Cormorant Garamond",serif;
+    font-size:1.6rem;
+    color:var(--gold);
+    margin-bottom:10px;
+}
+.ed-validation-grid h3{
+    font-size:1.15rem;
+    margin-bottom:8px;
+}
+.ed-validation-grid p{
+    color:var(--muted);
+    font-size:.95rem;
+}
+
+/* ---- Technical notes / try it / limitations panels ---- */
+.ed-panel-wrap{ width:min(720px,88%); }
+.ed-panel{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:36px;
+}
+.ed-panel-accent{
+    border-color:rgba(216,170,73,.35);
+    background:linear-gradient(180deg,rgba(216,170,73,.06),var(--surface));
+}
+.ed-panel-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+.ed-panel-list li{
+    position:relative;
+    padding-left:22px;
+    margin-bottom:16px;
+    color:#dbe3ec;
+    font-size:.98rem;
+    line-height:1.6;
+}
+.ed-panel-list li::before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:8px;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--gold);
+}
+.ed-panel p{
+    color:#dbe3ec;
+    font-size:1.02rem;
+}
+
+/* ---- Large editorial quote ---- */
+.ed-quote-section{
+    width:min(880px,90%);
+    margin:140px auto;
+    text-align:center;
+}
+.ed-quote{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(1.8rem,4vw,2.8rem);
+    line-height:1.35;
+    color:var(--text);
+}
+
+/* ---- Related articles ---- */
+.ed-related{ width:min(1080px,92%); }
+.ed-related-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+    margin-top:28px;
+}
+.ed-related-link{
+    display:block;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:28px;
+    text-decoration:none;
+    color:var(--text);
+    transition:.25s;
+}
+.ed-related-link:hover{
+    border-color:rgba(216,170,73,.4);
+    transform:translateY(-3px);
+}
+.ed-related-tag{
+    color:var(--gold);
+    text-transform:uppercase;
+    font-size:.72rem;
+    letter-spacing:.12em;
+}
+.ed-related-link h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:1.25rem;
+    margin-top:10px;
+}
+
+/* ---- Fade-in reveal state ---- */
+.ed-reveal{
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .8s ease, transform .8s ease;
+}
+.ed-reveal.ed-visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:860px){
+    .ed-explain{ grid-template-columns:1fr; }
+    .ed-validation-grid{ grid-template-columns:1fr; gap:28px; }
+    .ed-related-grid{ grid-template-columns:1fr; }
+    .ed-hero{ min-height:70vh; padding-bottom:56px; }
+    .ed-section{ margin:80px auto; }
+}

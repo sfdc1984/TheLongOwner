@@ -85,3 +85,64 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.ig-carousel').forEach(carousel => {
+    const track = carousel.querySelector('.ig-track');
+    const slides = carousel.querySelectorAll('.ig-slide');
+    const dots = carousel.querySelectorAll('.ig-dot');
+    const caption = carousel.parentElement.querySelector('.ig-caption');
+    const prevBtn = carousel.querySelector('.ig-prev');
+    const nextBtn = carousel.querySelector('.ig-next');
+
+    function goTo(index) {
+      const clamped = Math.max(0, Math.min(index, slides.length - 1));
+      track.scrollTo({ left: track.clientWidth * clamped, behavior: 'smooth' });
+    }
+
+    function updateActive() {
+      const index = Math.round(track.scrollLeft / track.clientWidth);
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      if (caption && slides[index]) {
+        caption.textContent = slides[index].getAttribute('data-caption') || '';
+      }
+    }
+
+    track.addEventListener('scroll', () => {
+      window.clearTimeout(track._scrollTimer);
+      track._scrollTimer = window.setTimeout(updateActive, 80);
+    });
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+    if (prevBtn) prevBtn.addEventListener('click', () => goTo(Math.round(track.scrollLeft / track.clientWidth) - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goTo(Math.round(track.scrollLeft / track.clientWidth) + 1));
+
+    updateActive();
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const progressBar = document.getElementById('ed-progress');
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }, { passive: true });
+  }
+
+  const edSections = document.querySelectorAll('.ed-section, .ed-photo-full, .ed-quote-section');
+  if (edSections.length) {
+    edSections.forEach(el => el.classList.add('ed-reveal'));
+    const edObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('ed-visible');
+          edObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    edSections.forEach(el => edObserver.observe(el));
+  }
+});
