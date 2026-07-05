@@ -1,12 +1,23 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
-    fetch("components/footer.html")
-        .then(response => response.text())
-        .then(html => {
-            const footer = document.getElementById("footer");
-            if (footer) {
-                footer.innerHTML = html;
-            }
-        });
+    async function loadComponent(id, file) {
+
+        const element = document.getElementById(id);
+
+        if (!element) return;
+
+        const response = await fetch(file);
+
+        if (!response.ok) {
+            console.error(`Couldn't load ${file}`);
+            return;
+        }
+
+        element.innerHTML = await response.text();
+
+    }
+
+    loadComponent("site-header", "components/header.html");
+    loadComponent("site-footer", "components/footer.html");
 
 });
